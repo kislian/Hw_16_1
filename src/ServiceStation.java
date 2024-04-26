@@ -1,24 +1,53 @@
 public class ServiceStation {
-    private CarChecker carChecker = new CarChecker();
-    private BicycleChecker bicycleChecker = new BicycleChecker();
-    private TruckChecker truckChecker = new TruckChecker();
     public void check(Vehicle vehicle) {
-        System.out.print("Обслуживаем " + vehicle.getModelName());
-        System.out.println();
+        System.out.println("Обслуживаем " + vehicle.getModelName());
         switch (vehicle) {
             case Bicycle bicycle:
-                bicycleChecker.check(bicycle);
+                check(bicycle);
                 break;
             case Truck truck:
-                truckChecker.check(truck);
+                check(truck);
                 break;
             case Car car:
-                carChecker.check(car);
+                check(car);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + vehicle);
         }
-        System.out.println("***** Обслуживание закончилось *****");
-        System.out.println("!!!!! Спасибо, что воспользовались услугами нашего Сервис Центра !!!!");
+    }
+
+    private void check(Bicycle car) {
+        checkTyres(car);
+        checkEngine();
+    }
+
+    private void check(Car car) {
+        checkTyres(car);
+        checkEngine();
+    }
+
+    public void check(Truck truck) {
+        checkTyres(truck);
+        checkEngine();
+        checkTrailer();
+    }
+
+    private void checkTyres(Vehicle vehicle) {
+        for (int i = 0; i < vehicle.getWheelsCount(); i++) {
+            //общий метод для классов Bicycle,Car,Truck
+            updateTyre();
+        }
+    }
+
+    private void updateTyre() {
+        System.out.println("Меняем покрышку");
+    }
+
+    private void checkTrailer() {
+        System.out.println("Проверяем прицеп");
+    }
+
+    private void checkEngine() {
+        System.out.println("Проверяем двигатель");
     }
 }
