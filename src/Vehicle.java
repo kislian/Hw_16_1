@@ -16,7 +16,5 @@ public abstract class Vehicle {
         return wheelsCount;
     }
 
-    public void updateTyre() {
-        System.out.println(" Меняем покрышку");
-    }
+
 }

@@ -1,6 +1,9 @@
 public class CarChecker extends VehicleChecker{
     public void check(Car car) {
         super.check(car);
-        car.checkEngine();
+        checkEngine();
+    }
+    public void checkEngine() {
+        System.out.println("Проверяем двигатель");
     }
 }
